@@ -332,15 +332,7 @@ public class HomeTask2  {
      */
     public static long sum(int n)
     {
-
-        /*if ( n > 0)
-       return (n>1) ? n+sum(n-1): n;
-        else
-            return (n<1) ? n+sum(n+1): n;*/
-
-
        return (n > 1) ? n+sum(n-1) : ((n < 1) ? n+sum(n+1) : n);
-
     }
 
     /**
