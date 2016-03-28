@@ -62,55 +62,20 @@ public class HomeTask2  {
      */
     public static long decimalToHex(int number)  {
         int help_rez = 0;
-        int fin_result = 0;
-        String result = "";
-        char result1 = 0 ;
-        String p1 = "";
+        int result = 0;
+        int mult = 1;
 
-
-        while (number != 0)       //   записывать по 1 цифре
+        while (number != 0)
         {
             help_rez = number % 16;
 
-            if (help_rez == 10)
-                result = result + "01";
-            else
-            if (help_rez == 11)
-                result = result + "11";
-            else
-            if (help_rez == 12)
-                result = result + "21";
-            else
-            if (help_rez == 13)
-                result = result + "31";
-            else
-            if (help_rez == 14)
-                result = result + "41";
-            else
-            if (help_rez == 15)
-                result = result + "51";
-            else
-            {
-                result = result + help_rez;
-            }
-
+            result = result + help_rez * mult;
+            mult *= 10;
             number /= 16;
 
-
         }
 
-
-        String result2 = "";
-
-        for(int i = result.length()-1; i >= 0; i--)
-        {
-            result2 =  result2 + result.charAt(i);
-        }
-
-        fin_result = Integer.valueOf(result2);
-
-        return fin_result;
-
+        return result;
 
     }
 
@@ -122,7 +87,6 @@ public class HomeTask2  {
      * @return десятичное число
      */
     public static int binaryToDecimal(long binary) {
-        // System.out.println(binary);
 
         int i;
         int count = 0;
@@ -134,58 +98,23 @@ public class HomeTask2  {
             count++;
         }
 
-
-        long [] numbers = new long[count];
+        int count_2 = 0;
+        long  numbers = 0;
 
         for (i = count - 1; i >= 0; i--)
         {
-            numbers [i] = sec_bin % 10;
+            numbers  = sec_bin % 10;
             sec_bin /= 10;
-        }
 
-
-
-
-
-      /*  System.out.println("11111111111111111111111111111");
-        for (i = 0; i<= count -1; i++)
-        {
-            System.out.println( numbers [i]);
-        }
-        System.out.println("11111111111111111111111111111");*/
-
-
-
-        long [] count_1 = new long[count];
-        int cc = count-1;
-
-        for (i =0; i <= count - 1; i++)
-        {
-            count_1 [i] = cc;
-            cc--;
-        }
-
-
-       /* System.out.println("11111111111111111111111111111");
-        for (i = 0; i<= count -1; i++)
-        {
-            System.out.println( count_1 [i]);
-        }
-        System.out.println("11111111111111111111111111111");*/
-
-        for (i = 0; i<= count -1; i++)
-        {
-
-            //System.out.println(count);
-            result = result + (numbers[i] * Math.pow(2,count_1[i]));
-
-            //System.out.println(result);
-
+            result = result + (numbers * Math.pow(2,count_2));
+            count_2++;
         }
 
         int fin_res= ( int ) result;;
 
         return fin_res;
+
+
 
     }
 
@@ -197,7 +126,6 @@ public class HomeTask2  {
      * @return десятичное число
      */
     public static int octalToDecimal(long octal){
-        // System.out.println(binary);
 
         int i;
         int count = 0;
@@ -208,33 +136,26 @@ public class HomeTask2  {
             octal /= 10;
             count++;
         }
+        int count_2 =0;
 
 
-        long [] numbers = new long[count];
+        long  numbers = 0;
+
+
+
+
 
         for (i = count - 1; i >= 0; i--)
         {
-            numbers [i] = sec_bin % 10;
+            numbers  = sec_bin % 10;
             sec_bin /= 10;
-        }
 
-        long [] count_1 = new long[count];
-        int cc = count-1;
-
-        for (i =0; i <= count - 1; i++)
-        {
-            count_1 [i] = cc;
-            cc--;
-        }
-
-        for (i = 0; i<= count -1; i++)
-        {
-
-            result = result + (numbers[i] * Math.pow(8,count_1[i]));
+            result = result + (numbers * Math.pow(8,count_2));
+            count_2++;
 
         }
 
-        int fin_res= ( int ) result;
+        int fin_res= ( int ) result;;
 
         return fin_res;
 
@@ -248,7 +169,6 @@ public class HomeTask2  {
      * @return десятичное число
      */
     public static int hexToDecimal(long hex){
-        // System.out.println(binary);
 
         int i;
         int count = 0;
@@ -260,54 +180,32 @@ public class HomeTask2  {
             count++;
         }
 
-
-        long [] count_1 = new long[count];
-        int cc = count-1;
-
-        for (i =0; i <= count - 1; i++)
-        {
-            count_1 [i] = cc;
-            cc--;
-
-        }
-
-
-
-        long [] numbers = new long[count];
+        long  count_1 =0;
+        long numbers = 0;
 
         for (i = count - 1; i >= 0; i--)
         {
-            numbers [i] = sec_bin % 100;
-            if (numbers[i] == 10 || numbers[i] == 11 || numbers[i] == 12 || numbers[i] == 13 || numbers[i] == 14 || numbers[i] == 15)
+            numbers = sec_bin % 100;
+            if (numbers == 10 || numbers == 11 || numbers == 12 || numbers == 13 || numbers == 14 || numbers == 15)
             {
 
-                numbers [i] = sec_bin % 100;
+                numbers = sec_bin % 100;
                 sec_bin /= 100;
 
             }
             else
-            if (numbers[i] != 10 || numbers[i] != 11 || numbers[i] != 12 || numbers[i] != 13 || numbers[i] != 14 || numbers[i] != 15)
+            if (numbers != 10 || numbers!= 11 || numbers != 12 || numbers != 13 || numbers != 14 || numbers != 15)
             {
-                numbers [i] = sec_bin % 10;
+                numbers  = sec_bin % 10;
                 sec_bin /= 10;
 
             }
 
+            result = result + (numbers * Math.pow(16,count_1));
+            count_1++;
         }
-
-
-        for (i = 0; i<= count -1; i++)
-        {
-
-            result = result + (numbers[i] * Math.pow(16,count_1[i]));
-
-        }
-
-
 
         int fin_res= ( int ) result;;
-
-
         return fin_res;
     }
 
@@ -327,12 +225,8 @@ public class HomeTask2  {
         for (i = 0; i<= rows-1; i++)
             for (j = 0; j<= rows-1; j++)
             {
-                numbers[i][j] = 0 + rnd.nextInt(1000 - 0 + 1);
+                numbers[i][j] = rnd.nextInt();
             }
-
-        /*for (i = 0; i<= rows-1; i++)
-            for (j = 0; j<= rows-1; j++)
-                System.out.println(numbers[i][j] );*/
 
         return numbers;
     }
@@ -439,10 +333,13 @@ public class HomeTask2  {
     public static long sum(int n)
     {
 
-        if ( n > 0)
+        /*if ( n > 0)
        return (n>1) ? n+sum(n-1): n;
         else
-            return (n<1) ? n+sum(n+1): n;
+            return (n<1) ? n+sum(n+1): n;*/
+
+
+       return (n > 1) ? n+sum(n-1) : ((n < 1) ? n+sum(n+1) : n);
 
     }
 
@@ -459,16 +356,13 @@ public class HomeTask2  {
         {
             return first + product(first, --second);
         }
-
         else
         if (second < -1 && first < -1)
         {
             return first + product(Math.abs(first), Math.abs(--second));
 
         }
-
         return first;
-
     }
 
 }
