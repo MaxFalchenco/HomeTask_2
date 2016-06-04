@@ -70,7 +70,7 @@ public class HomeTask2  {
             help_rez = number % 16;
 
             result = result + help_rez * mult;
-            mult *= 10;
+            mult *= 100;
             number /= 16;
 
         }
@@ -186,19 +186,19 @@ public class HomeTask2  {
         for (i = count - 1; i >= 0; i--)
         {
             numbers = sec_bin % 100;
-            if (numbers == 10 || numbers == 11 || numbers == 12 || numbers == 13 || numbers == 14 || numbers == 15)
-            {
 
-                numbers = sec_bin % 100;
-                sec_bin /= 100;
+            for (i =10; i <= 15; i++) {
+                if (numbers == i) {
 
-            }
-            else
-            if (numbers != 10 || numbers!= 11 || numbers != 12 || numbers != 13 || numbers != 14 || numbers != 15)
-            {
-                numbers  = sec_bin % 10;
-                sec_bin /= 10;
+                    numbers = sec_bin % 100;
+                    sec_bin /= 100;
 
+                } else
+                if (numbers != i) {
+                            numbers = sec_bin % 10;
+                            sec_bin /= 10;
+
+                        }
             }
 
             result = result + (numbers * Math.pow(16,count_1));
